@@ -18,7 +18,7 @@
 		<ApplicationTitle>FreeRadio</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.FreeRadio</ApplicationId>
+		<ApplicationId>me.weezard12.FreeRadio</ApplicationId>
 		<ApplicationIdGuid>0450c0c4-e59e-4e84-8889-f58ae43412c8</ApplicationIdGuid>
 
 		<!-- Versions -->
