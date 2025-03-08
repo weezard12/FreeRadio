@@ -20,6 +20,8 @@ public partial class RadioPage : ContentPage
 
     private bool isPlaying = true;
 
+    private bool isAnimating;
+
     public RadioPage(RadioStation radioStation)
     {
         InitializeComponent();
@@ -96,6 +98,9 @@ public partial class RadioPage : ContentPage
         MediaPlayer.Source = radioStation.URL;
         MediaPlayer.Play();
         isPlaying = true;
+
+        isAnimating = true;
+        AnimateGradient();
     }
 
     protected override void OnDisappearing()
@@ -103,7 +108,49 @@ public partial class RadioPage : ContentPage
         MediaPlayer.Stop();
         isPlaying = false;
         base.OnDisappearing();
-        
+
+        isAnimating = false;
+
     }
 
+    private async void AnimateGradient()
+    {
+        while (isAnimating)
+        {
+            await AnimateOffset(0, 0.3, 3000, Easing.SinInOut); // Smooth forward animation
+            await AnimateOffset(0.3, 0, 3000, Easing.SinInOut); // Smooth backward animation
+        }
+    }
+
+    private async Task AnimateOffset(double start, double end, int duration, Easing easing)
+    {
+        double timeElapsed = 0;
+        int frameRate = 60; // 60 FPS for smoothness
+        double frameTime = 1000.0 / frameRate; // Milliseconds per frame
+
+        while (timeElapsed < duration)
+        {
+            if (!isAnimating) return;
+
+            double progress = timeElapsed / duration; // Normalize progress (0 to 1)
+            double easedProgress = easing.Ease(progress); // Apply easing
+            double newOffset = Lerp(start, end, easedProgress); // Interpolate
+
+            FirstColor.Offset = (float)newOffset;
+            SecondColor.Offset = (float)(1 - newOffset); // Reverse for smooth effect
+
+            await Task.Delay((int)frameTime);
+            timeElapsed += frameTime; // Increment time
+        }
+
+        // Ensure it finishes exactly at the end
+        FirstColor.Offset = (float)end;
+        SecondColor.Offset = (float)(1 - end);
+    }
+
+    private double Lerp(double start, double end, double t)
+    {
+        return start + (end - start) * t;
+    }
 }
+

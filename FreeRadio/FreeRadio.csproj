@@ -84,9 +84,6 @@
 	  <MauiXaml Update="Views\AboutMePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\RadioImage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\RadioPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
