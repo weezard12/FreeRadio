@@ -71,7 +71,6 @@ public partial class RadioPage : ContentPage
         {
             MediaPlayer.Play();
             MediaActionButton.Source = "pause_icon.png";
-            
         }
 
         isPlaying = !isPlaying;
