@@ -15,7 +15,7 @@
 		<MauiVersion>9.0.21</MauiVersion>
 
 		<!-- Display name -->
-		<ApplicationTitle>FreeRadio</ApplicationTitle>
+		<ApplicationTitle>Free Radio</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>me.weezard12.FreeRadio</ApplicationId>
@@ -37,9 +37,9 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FBF8EF" />
 		<MauiIcon Include="Resources\Images\app_icon.svg">
-		  <Color>#512BD4</Color>
+		  <Color>#FBF8EF</Color>
 		  <ForegroundFile>Resources\AppIcon\appiconfg.svg</ForegroundFile>
 		</MauiIcon>
 

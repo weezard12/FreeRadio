@@ -8,7 +8,7 @@ public partial class AboutMePage : ContentPage
 
 	}
 
-    private void Shere_Clicked(object sender, EventArgs e)
+    private void Share_Clicked(object sender, EventArgs e)
     {
 
     }

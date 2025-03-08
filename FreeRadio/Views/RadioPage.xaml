@@ -33,14 +33,19 @@
 
 
         <Border StrokeThickness="0">
-
             <Image
                 x:Name="RadioImage"
-                Margin="50"
-                Aspect="AspectFill"
-                HorizontalOptions="Fill"
+                Margin="20"
+                Aspect="AspectFit"
+                HorizontalOptions="Center"
+                MaximumHeightRequest="{OnPlatform Android=250,
+                                                  iOS=250,
+                                                  WinUI=300}"
+                MaximumWidthRequest="{OnPlatform Android=250,
+                                                 iOS=250,
+                                                 WinUI=300}"
                 Source="kan_88.png"
-                VerticalOptions="Fill">
+                VerticalOptions="Center">
                 <Image.Shadow>
                     <Shadow
                         Brush="Black"
@@ -67,18 +72,30 @@
 
             <ImageButton
                 x:Name="MediaActionButton"
+                BackgroundColor="Transparent"
                 Clicked="MediaAction_Clicked"
-                HorizontalOptions="Start"
+                HeightRequest="{OnPlatform Android=80,
+                                           iOS=90,
+                                           WinUI=100}"
+                HorizontalOptions="Center"
                 Source="pause_icon.png"
                 VerticalOptions="End"
-                WidthRequest="100" />
+                WidthRequest="{OnPlatform Android=80,
+                                          iOS=90,
+                                          WinUI=100}" />
 
             <ImageButton
+                BackgroundColor="Transparent"
                 Clicked="SkipToEnd_Clicked"
-                HorizontalOptions="End"
+                HeightRequest="{OnPlatform Android=80,
+                                           iOS=90,
+                                           WinUI=100}"
+                HorizontalOptions="Center"
                 Source="skip_icon.png"
                 VerticalOptions="End"
-                WidthRequest="100" />
+                WidthRequest="{OnPlatform Android=80,
+                                          iOS=90,
+                                          WinUI=100}" />
         </HorizontalStackLayout>
 
 

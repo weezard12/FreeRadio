@@ -40,7 +40,7 @@ public partial class RadioPage : ContentPage
         }
 
         // Start a timer to update audio levels every 200ms
-        timer = new System.Timers.Timer(80);
+        timer = new System.Timers.Timer(60);
         timer.Elapsed += Timer_Elapsed;
         timer.Start();
 

@@ -42,11 +42,16 @@
             VerticalOptions="Center" />
 
         <ImageButton
-            Clicked="Shere_Clicked"
-            HeightRequest="150"
+            BackgroundColor="Transparent"
+            Clicked="Share_Clicked"
+            HeightRequest="{OnPlatform Android=100,
+                                       iOS=150,
+                                       WinUI=150}"
             HorizontalOptions="Center"
             Source="radio.png"
-            WidthRequest="150" />
+            WidthRequest="{OnPlatform Android=100,
+                                      iOS=150,
+                                      WinUI=150}" />
 
         <!--  Support Me  -->
         <Label
@@ -56,12 +61,18 @@
             VerticalOptions="Center" />
 
         <ImageButton
+            BackgroundColor="Transparent"
             Clicked="SupportMe_Clicked"
-            HeightRequest="150"
+            HeightRequest="{OnPlatform Android=100,
+                                       iOS=150,
+                                       WinUI=150}"
             HorizontalOptions="Center"
             Source="weezard12.png"
-            WidthRequest="150" />
+            WidthRequest="{OnPlatform Android=100,
+                                      iOS=150,
+                                      WinUI=150}" />
 
     </VerticalStackLayout>
+
 
 </ContentPage>
