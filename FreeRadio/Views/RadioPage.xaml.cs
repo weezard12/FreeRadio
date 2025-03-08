@@ -95,12 +95,15 @@ public partial class RadioPage : ContentPage
 
         MediaPlayer.Source = radioStation.URL;
         MediaPlayer.Play();
+        isPlaying = true;
     }
 
     protected override void OnDisappearing()
     {
         MediaPlayer.Stop();
+        isPlaying = false;
         base.OnDisappearing();
+        
     }
 
 }

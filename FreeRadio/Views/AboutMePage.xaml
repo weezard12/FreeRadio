@@ -4,30 +4,64 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="AboutMePage">
+
     <ContentPage.Background>
         <LinearGradientBrush>
-
             <GradientStop Offset="0.0" Color="#80CBC4" />
-
             <GradientStop Offset="1.0" Color="#B4EBE6" />
-
         </LinearGradientBrush>
     </ContentPage.Background>
-    <VerticalStackLayout>
+
+    <VerticalStackLayout HorizontalOptions="Center" Spacing="20">
+
+        <!--  Scaled App Name  -->
         <Label
+            FontSize="28"
             HorizontalOptions="Center"
             Text="Free Radio App"
             VerticalOptions="Center" />
-        <HorizontalStackLayout>
+
+        <!--  Author Label  -->
+        <HorizontalStackLayout HorizontalOptions="Center">
             <Label
-                HorizontalOptions="Center"
+                FontSize="16"
                 Text="By "
                 VerticalOptions="Center" />
             <Label
-                HorizontalOptions="Center"
-                Text="weezard12"
+                FontSize="16"
+                Text=" weezard12"
+                TextColor="Red"
                 VerticalOptions="Center" />
         </HorizontalStackLayout>
 
+        <!--  Share This App  -->
+        <Label
+            FontSize="18"
+            HorizontalOptions="Center"
+            Text="Share this app"
+            VerticalOptions="Center" />
+
+        <ImageButton
+            Clicked="Shere_Clicked"
+            HeightRequest="150"
+            HorizontalOptions="Center"
+            Source="radio.png"
+            WidthRequest="150" />
+
+        <!--  Support Me  -->
+        <Label
+            FontSize="18"
+            HorizontalOptions="Center"
+            Text="Support me"
+            VerticalOptions="Center" />
+
+        <ImageButton
+            Clicked="SupportMe_Clicked"
+            HeightRequest="150"
+            HorizontalOptions="Center"
+            Source="weezard12.png"
+            WidthRequest="150" />
+
     </VerticalStackLayout>
+
 </ContentPage>

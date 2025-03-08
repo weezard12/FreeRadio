@@ -21,7 +21,16 @@
             x:Name="RadioName"
             FontAttributes="Bold"
             FontSize="34"
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center">
+            <Label.Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity="0.6"
+                    Radius="10"
+                    Offset="5,5" />
+            </Label.Shadow>
+        </Label>
+
 
         <Border StrokeThickness="0">
 
