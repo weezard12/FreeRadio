@@ -1,4 +1,6 @@
-﻿namespace FreeRadio;
+﻿using SkiaSharp.Views.Maui.Controls.Hosting;
+
+namespace FreeRadio;
 
 public static class MauiProgram
 {
@@ -9,6 +11,7 @@ public static class MauiProgram
 			.UseMauiApp<App>()
             .UseMauiCommunityToolkitMediaElement()
             .UseMauiCommunityToolkit()
+			.UseSkiaSharp()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

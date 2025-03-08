@@ -3,6 +3,7 @@
     x:Class="FreeRadio.Views.RadioPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:FreeRadio.Views"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="RadioPage">
     <ContentPage.Background>
@@ -42,7 +43,33 @@
 
 
 
+        <local:AudioVisualizerView
+            x:Name="AudioVisualizer"
+            HeightRequest="20"
+            WidthRequest="300" />
 
+
+
+        <HorizontalStackLayout
+            Padding="10"
+            HorizontalOptions="Center"
+            Spacing="20">
+
+            <ImageButton
+                x:Name="MediaActionButton"
+                Clicked="MediaAction_Clicked"
+                HorizontalOptions="Start"
+                Source="pause_icon.png"
+                VerticalOptions="End"
+                WidthRequest="100" />
+
+            <ImageButton
+                Clicked="SkipToEnd_Clicked"
+                HorizontalOptions="End"
+                Source="skip_icon.png"
+                VerticalOptions="End"
+                WidthRequest="100" />
+        </HorizontalStackLayout>
 
 
         <toolkit:MediaElement
