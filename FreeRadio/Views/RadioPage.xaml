@@ -8,10 +8,11 @@
     Title="RadioPage">
     <ContentPage.Background>
         <LinearGradientBrush>
-            <GradientStop Offset="0.0" Color="#552586" />
-            <!--  Dark Blue  -->
-            <GradientStop Offset="1.0" Color="#B589D6" />
-            <!--  Lighter Blue  -->
+
+            <GradientStop x:Name="FirstColor" Offset="0.0" Color="#552586" />
+
+            <GradientStop x:Name="SecondColor" Offset="1.0" Color="#B589D6" />
+
         </LinearGradientBrush>
     </ContentPage.Background>
     <VerticalStackLayout Padding="20" Spacing="20">

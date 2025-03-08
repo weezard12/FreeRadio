@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FreeRadio.Views.AboutMePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AboutMePage">
+    <ContentPage.Background>
+        <LinearGradientBrush>
+
+            <GradientStop Offset="0.0" Color="#80CBC4" />
+
+            <GradientStop Offset="1.0" Color="#B4EBE6" />
+
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="Free Radio App"
+            VerticalOptions="Center" />
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="By "
+                VerticalOptions="Center" />
+            <Label
+                HorizontalOptions="Center"
+                Text="weezard12"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -41,6 +41,9 @@ public partial class RadioPage : ContentPage
         timer = new System.Timers.Timer(80);
         timer.Elapsed += Timer_Elapsed;
         timer.Start();
+
+        FirstColor.Color = radioStation.LightColor.Color;
+        SecondColor.Color = radioStation.DarkColor.Color;
     }
 
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -78,12 +81,26 @@ public partial class RadioPage : ContentPage
 
     private void SkipToEnd_Clicked(object sender, EventArgs e)
     {
-        var currentSource = MediaPlayer.Source;
         MediaPlayer.Source = null;
-        MediaPlayer.Source = currentSource;
+        MediaPlayer.Source = radioStation.URL;
 
         MediaPlayer.Play();
         MediaActionButton.Source = "pause_icon.png";
         isPlaying = true;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        MediaPlayer.Source = radioStation.URL;
+        MediaPlayer.Play();
+    }
+
+    protected override void OnDisappearing()
+    {
+        MediaPlayer.Stop();
+        base.OnDisappearing();
+    }
+
 }
