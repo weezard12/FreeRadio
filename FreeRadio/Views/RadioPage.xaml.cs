@@ -50,13 +50,15 @@ public partial class RadioPage : ContentPage
 
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
+        if (!isPlaying)
+            return;
+
         // Slide the audio data: shift currentLevels left by one index
         Array.Copy(currentLevels, 1, currentLevels, 0, barCount - 1);
         // Generate a new random level for the rightmost bar
         currentLevels[barCount - 1] = (float)random.NextDouble();
 
-        if (!isPlaying)
-            return;
+
 
         // Update the visualizer on the main thread
         MainThread.BeginInvokeOnMainThread(() =>
