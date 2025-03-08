@@ -7,7 +7,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.UseMauiCommunityToolkit()
+            .UseMauiCommunityToolkitMediaElement()
+            .UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -19,7 +20,9 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MainViewModel>();
 
 		builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<RadioPage>();
 
-		return builder.Build();
+
+        return builder.Build();
 	}
 }

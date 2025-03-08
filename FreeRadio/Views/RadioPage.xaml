@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FreeRadio.Views.RadioPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="RadioPage">
+    <ContentPage.Background>
+        <LinearGradientBrush>
+            <GradientStop Offset="0.0" Color="#552586" />
+            <!--  Dark Blue  -->
+            <GradientStop Offset="1.0" Color="#B589D6" />
+            <!--  Lighter Blue  -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label
+            x:Name="RadioName"
+            FontAttributes="Bold"
+            FontSize="34"
+            HorizontalOptions="Center" />
+
+        <Border StrokeThickness="0">
+
+            <Image
+                x:Name="RadioImage"
+                Margin="50"
+                Aspect="AspectFill"
+                HorizontalOptions="Fill"
+                Source="kan_88.png"
+                VerticalOptions="Fill">
+                <Image.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity="0.9"
+                        Radius="10"
+                        Offset="5,5" />
+                </Image.Shadow>
+            </Image>
+        </Border>
+
+
+
+
+
+
+        <toolkit:MediaElement
+            x:Name="MediaPlayer"
+            HeightRequest="300"
+            HorizontalOptions="Center"
+            IsVisible="False"
+            ShouldAutoPlay="True"
+            VerticalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>
