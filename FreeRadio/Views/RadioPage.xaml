@@ -32,7 +32,6 @@
         </Label>
 
 
-        <Border StrokeThickness="0">
             <Image
                 x:Name="RadioImage"
                 Margin="20"
@@ -54,7 +53,7 @@
                         Offset="5,5" />
                 </Image.Shadow>
             </Image>
-        </Border>
+
 
 
 

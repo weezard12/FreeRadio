@@ -2,73 +2,84 @@
 using SkiaSharp.Views.Maui;
 using SkiaSharp.Views.Maui.Controls;
 using System;
+using System.Linq;
+using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace FreeRadio.Views
 {
     class AudioVisualizerView : SKCanvasView
     {
-        // An array holding the current audio levels (normalized 0 to 1)
-        public float[] AudioLevels { get; private set; } = new float[64];
+        private float[] AudioLevels = new float[64];  // Stores current levels
+        private float[] TargetLevels = new float[64]; // Stores new input levels to transition to
+        private Timer shiftTimer;
+        private const int UpdateIntervalMs = 30; // Adjust delay here
 
         public AudioVisualizerView()
         {
-            // Hook up the paint event
             this.PaintSurface += OnPaintSurface;
+
+            // Timer to smoothly shift bars left over time
+            shiftTimer = new Timer(UpdateIntervalMs);
+            shiftTimer.Elapsed += OnShiftTick;
+            shiftTimer.AutoReset = true;
+            shiftTimer.Start();
         }
 
         private void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
             var canvas = e.Surface.Canvas;
-            // Clear canvas with transparent background
             canvas.Clear(SKColors.Transparent);
 
             int barCount = AudioLevels.Length;
             float width = e.Info.Width;
             float height = e.Info.Height;
             float barWidth = width / barCount;
-            // Calculate the center Y position for a double-sided visualizer
             float centerY = height / 2;
 
             using (var paint = new SKPaint { Color = SKColors.White, IsAntialias = true })
             {
-                // Draw each bar based on the audio level value
                 for (int i = 0; i < barCount; i++)
                 {
                     float level = AudioLevels[i];
-                    // Scale level to half of the canvas height
                     float halfBarHeight = level * centerY;
-                    // Define a small gap between bars
                     float gap = 2;
                     float left = i * barWidth;
                     float right = (i + 1) * barWidth - gap;
 
-                    // Create the top bar starting from the center going upward
                     var topRect = new SKRect(left, centerY - halfBarHeight, right, centerY);
-                    // Create the bottom bar starting from the center going downward
                     var bottomRect = new SKRect(left, centerY, right, centerY + halfBarHeight);
 
-                    // Set a corner radius to smooth the edges (adjust factor as needed)
                     float cornerRadius = (barWidth * 0.3f);
-
-                    // Draw rounded rectangles for smooth edges
                     canvas.DrawRoundRect(topRect, cornerRadius, cornerRadius, paint);
                     canvas.DrawRoundRect(bottomRect, cornerRadius, cornerRadius, paint);
                 }
             }
         }
 
-        // Call this method to update the visualizer with new audio data.
         public void UpdateAudioLevels(float[] levels)
         {
             if (levels == null || levels.Length == 0)
                 return;
 
-            // Resize array if necessary
-            if (levels.Length != AudioLevels.Length)
-                AudioLevels = new float[levels.Length];
+            if (levels.Length != TargetLevels.Length)
+                TargetLevels = new float[levels.Length];
 
-            Array.Copy(levels, AudioLevels, levels.Length);
-            InvalidateSurface(); // Redraw the canvas
+            Array.Copy(levels, TargetLevels, levels.Length);
+        }
+
+        private void OnShiftTick(object sender, ElapsedEventArgs e)
+        {
+            // Shift all bars left by one position
+            for (int i = 0; i < AudioLevels.Length - 1; i++)
+            {
+                AudioLevels[i] = AudioLevels[i + 1];
+            }
+
+            // Gradually introduce the new target values at the end
+            AudioLevels[^1] = TargetLevels[^1];
+
+            InvalidateSurface(); // Redraw the visualizer
         }
     }
 }
