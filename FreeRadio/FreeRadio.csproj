@@ -37,10 +37,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" ForegroundScale="0.1" Color="#FBF8EF" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" ForegroundScale="0.6" Color="#FBF8EF" />
 
 		<!-- Splash Screen -->
-
+		
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 

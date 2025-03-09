@@ -58,14 +58,11 @@ public partial class RadioPage : ContentPage
 
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
-        if (!isPlaying)
-            return;
 
         // Slide the audio data: shift currentLevels left by one index
         Array.Copy(currentLevels, 1, currentLevels, 0, barCount - 1);
         // Generate a new random level for the rightmost bar
         currentLevels[barCount - 1] = (float)random.NextDouble();
-
 
 
         // Update the visualizer on the main thread
@@ -117,9 +114,8 @@ public partial class RadioPage : ContentPage
     {
         MediaPlayer.Stop();
         isPlaying = false;
-        base.OnDisappearing();
-
         isAnimating = false;
+        base.OnDisappearing();
 
     }
 

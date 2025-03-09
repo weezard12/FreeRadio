@@ -70,6 +70,7 @@ namespace FreeRadio.Views
 
         private void OnShiftTick(object sender, ElapsedEventArgs e)
         {
+
             // Shift all bars left by one position
             for (int i = 0; i < AudioLevels.Length - 1; i++)
             {
@@ -81,5 +82,7 @@ namespace FreeRadio.Views
 
             InvalidateSurface(); // Redraw the visualizer
         }
+
     }
+
 }
