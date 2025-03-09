@@ -2,7 +2,9 @@ using FreeRadio.Logic;
 using Plugin.Maui.Audio;
 using System.Timers;
 using System;
-using Microsoft.Maui.Dispatching; // For MainThread
+using Microsoft.Maui.Dispatching;
+using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Maui.Alerts; // For MainThread
 
 namespace FreeRadio.Views;
 
@@ -46,6 +48,13 @@ public partial class RadioPage : ContentPage
 
         FirstColor.Color = radioStation.LightColor.Color;
         SecondColor.Color = radioStation.DarkColor.Color;
+        MediaPlayer.MediaFailed += async (s,e) =>
+        {
+            string errorMessage = $"Faild to load media: {e.ErrorMessage}";
+
+            // Optional: Show a toast notification (for a small popup)
+            await Toast.Make(errorMessage, CommunityToolkit.Maui.Core.ToastDuration.Long).Show();
+        };
     }
 
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -86,7 +95,7 @@ public partial class RadioPage : ContentPage
     private void SkipToEnd_Clicked(object sender, EventArgs e)
     {
         MediaPlayer.Source = null;
-        MediaPlayer.Source = radioStation.URL;
+        MediaPlayer.Source = MediaSource.FromUri(radioStation.URL);
 
         MediaPlayer.Play();
         MediaActionButton.Source = "pause_icon.png";
@@ -97,7 +106,7 @@ public partial class RadioPage : ContentPage
     {
         base.OnAppearing();
 
-        MediaPlayer.Source = radioStation.URL;
+        MediaPlayer.Source = MediaSource.FromUri(radioStation.URL);
         MediaPlayer.Play();
         isPlaying = true;
 
