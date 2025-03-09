@@ -18,3 +18,4 @@ Free Radio is a multi-platform radio streaming application built with C# and .NE
 🎧 Simple & Intuitive UI  
 
 ## Installation
+Install the [latest release](https://github.com/weezard12/FreeRadio/releases/latest)
