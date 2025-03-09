@@ -37,11 +37,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FBF8EF" />
-		<MauiIcon Include="Resources\Images\app_icon.svg">
-		  <Color>#FBF8EF</Color>
-		  <ForegroundFile>Resources\AppIcon\appiconfg.svg</ForegroundFile>
-		</MauiIcon>
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" ForegroundScale="0.1" Color="#FBF8EF" />
 
 		<!-- Splash Screen -->
 
@@ -56,10 +52,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\app_icon.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="AlohaKit" Version="1.0.100" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
 		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="6.0.1" />
@@ -68,7 +60,6 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="9.0.40" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
-		<PackageReference Include="Plugin.Maui.Audio" Version="3.0.1" />
 		<PackageReference Include="SimpleToolkit.Core" Version="5.1.2" />
 		<PackageReference Include="SkiaSharp" Version="3.116.1" />
 		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="3.116.1" />
